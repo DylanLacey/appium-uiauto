@@ -522,7 +522,11 @@ $.extend(au, {
   }
 
 , getElementsByXpath: function (xpath, ctx) {
-    return this._returnElems(this._getElementsByXpath(xpath, ctx));
+    var results = this._getElementsByXpath(xpath, ctx);
+    if (results.status) {
+      return results;
+    }
+    return this._returnElems(results);
   }
 
 , getElementByXpath: function (xpath, ctx) {
